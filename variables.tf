@@ -1,10 +1,6 @@
 variable "cloudhealth_external_id" {
   description = "REQUIRED: Enter the ExternalID provided to you by CloudHealth."
   type        = string
-  validation {
-    condition     = length(var.cloudhealth_external_id) == 30
-    error_message = "The External ID must be exactly 30 characters."
-  }
 }
 
 variable "create_s3_cur_bucket" {
