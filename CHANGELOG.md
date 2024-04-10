@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+### [1.0.1](https://github.com/axetrading/terraform-aws-cloudhealth/compare/v1.0.0...v1.0.1) (2024-04-10)
+
+
+### Bug Fixes
+
+* fixing lenght of external id - removing the length limit ([9263e14](https://github.com/axetrading/terraform-aws-cloudhealth/commit/9263e145a17c9fe04242a34dc96b9b73638e2da0))
+
 ## 1.0.0 (2024-04-10)
 
 
