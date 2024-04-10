@@ -2,16 +2,19 @@ resource "aws_s3_bucket" "cur" {
   count  = var.create_s3_cur_bucket ? 1 : 0
   bucket = var.cur_bucket_name
 
-  server_side_encryption_configuration {
-    rule {
-      apply_server_side_encryption_by_default {
-        kms_master_key_id = var.s3_use_existing_kms_key ? var.s3_kms_key_arn : aws_kms_key.s3[0].arn
-        sse_algorithm     = "aws:kms"
-      }
+  tags = var.tags
+}
+
+resource "aws_s3_bucket_server_side_encryption_configuration" "cur" {
+  count  = var.create_s3_cur_bucket ? 1 : 0
+  bucket = aws_s3_bucket.cur[0].id
+
+  rule {
+    apply_server_side_encryption_by_default {
+      kms_master_key_id = var.s3_use_existing_kms_key ? var.s3_kms_key_arn : aws_kms_key.s3[0].arn
+      sse_algorithm     = "aws:kms"
     }
   }
-
-  tags = var.tags
 }
 
 resource "aws_s3_bucket_versioning" "cur" {
@@ -20,12 +23,6 @@ resource "aws_s3_bucket_versioning" "cur" {
   versioning_configuration {
     status = "Enabled"
   }
-}
-
-resource "aws_s3_bucket_acl" "cur" {
-  count  = var.create_s3_cur_bucket ? 1 : 0
-  bucket = aws_s3_bucket.cur[0].id
-  acl    = "private"
 }
 
 resource "aws_s3_bucket_public_access_block" "cur" {
