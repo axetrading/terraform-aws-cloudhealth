@@ -23,14 +23,12 @@ data "aws_iam_policy_document" "cloudhealth_assume_role_policy" {
   }
 }
 
-data "aws_iam_policy_document" "cloudhealth_read_only_policy_doc" {
+data "aws_iam_policy_document" "combined_policy_doc" {
+  # Combining the statements from cloudhealth_read_only_policy_doc
   statement {
     actions = [
       "appstream:Describe*",
       "appstream:List*",
-      "appstream:ListTagsForResource",
-      "appstream:DescribeApplications",
-      "appstream:DescribeImages",
       "autoscaling:Describe*",
       "cloudformation:ListStacks",
       "cloudformation:ListStackResources",
@@ -59,8 +57,6 @@ data "aws_iam_policy_document" "cloudhealth_read_only_policy_doc" {
       "ec2:GetReservedInstancesExchangeQuote",
       "ecs:List*",
       "ecs:Describe*",
-      "eks:Describe*",
-      "eks:List*",
       "elasticache:Describe*",
       "elasticache:ListTagsForResource",
       "elasticbeanstalk:Check*",
@@ -77,7 +73,6 @@ data "aws_iam_policy_document" "cloudhealth_read_only_policy_doc" {
       "firehose:ListDeliveryStreams",
       "firehose:DescribeDeliveryStream",
       "firehose:ListTagsForDeliveryStream",
-      "fsx:Describe*",
       "iam:List*",
       "iam:Get*",
       "iam:GenerateCredentialReport",
@@ -121,17 +116,20 @@ data "aws_iam_policy_document" "cloudhealth_read_only_policy_doc" {
       "sqs:ListQueues",
       "storagegateway:List*",
       "storagegateway:Describe*",
-      "workspaces:Describe*"
+      "workspaces:Describe*",
+      "eks:Describe*",
+      "eks:List*",
+      "fsx:Describe*",
+      "securitylake:List*"
     ]
     resources = ["*"]
   }
-}
 
-data "aws_iam_policy_document" "cloudhealth_bucket_access" {
+  # Combining the statements from cloudhealth_bucket_access
   statement {
     actions = [
       "s3:Get*",
-      "s3:List*"
+      "s3:List*",
     ]
     resources = [
       "arn:aws:s3:::${local.cur_bucket_name}",
@@ -139,10 +137,13 @@ data "aws_iam_policy_document" "cloudhealth_bucket_access" {
     ]
   }
   statement {
-    actions = ["s3:Put*"]
+    actions = [
+      "s3:Get*",
+      "s3:List*",
+    ]
     resources = [
-      "arn:aws:s3:::${local.cur_bucket_name}",
-      "arn:aws:s3:::${local.cur_bucket_name}/*"
+      "arn:aws:s3:::${local.billing_bucket_name}",
+      "arn:aws:s3:::${local.billing_bucket_name}/*"
     ]
   }
 }

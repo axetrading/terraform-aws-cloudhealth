@@ -34,8 +34,7 @@ This module manages installation of CloudHealth - AWS required resources.
 | [aws_s3_bucket_versioning.cur](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_versioning) | resource |
 | [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity) | data source |
 | [aws_iam_policy_document.cloudhealth_assume_role_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
-| [aws_iam_policy_document.cloudhealth_bucket_access](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
-| [aws_iam_policy_document.cloudhealth_read_only_policy_doc](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
+| [aws_iam_policy_document.combined_policy_doc](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_policy_document.cur_bucket_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 | [aws_partition.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/partition) | data source |
 | [aws_region.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/region) | data source |
@@ -44,6 +43,7 @@ This module manages installation of CloudHealth - AWS required resources.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_billing_bucket_name"></a> [billing\_bucket\_name](#input\_billing\_bucket\_name) | The name of the S3 bucket where AWS CUR files are saved. | `string` | `null` | no |
 | <a name="input_cloudhealth_external_id"></a> [cloudhealth\_external\_id](#input\_cloudhealth\_external\_id) | REQUIRED: Enter the ExternalID provided to you by CloudHealth. | `string` | n/a | yes |
 | <a name="input_create_s3_access_policy"></a> [create\_s3\_access\_policy](#input\_create\_s3\_access\_policy) | Flag to create the S3 policy | `bool` | `false` | no |
 | <a name="input_create_s3_cur_bucket"></a> [create\_s3\_cur\_bucket](#input\_create\_s3\_cur\_bucket) | Flag to create the S3 bucket for AWS CUR files. | `bool` | `false` | no |
