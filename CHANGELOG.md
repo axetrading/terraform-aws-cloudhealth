@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+### [1.0.2](https://github.com/axetrading/terraform-aws-cloudhealth/compare/v1.0.1...v1.0.2) (2024-04-10)
+
+
+### Bug Fixes
+
+* fix acl - keep the default settings ([cd8fb02](https://github.com/axetrading/terraform-aws-cloudhealth/commit/cd8fb02e9eeb67d68efbf9e8851a97349b52f99d))
+* fix acl - keep the default settings ([4ecf85d](https://github.com/axetrading/terraform-aws-cloudhealth/commit/4ecf85d63851214a2952e95adf94194f6d4cd85a))
+
 ### [1.0.1](https://github.com/axetrading/terraform-aws-cloudhealth/compare/v1.0.0...v1.0.1) (2024-04-10)
 
 
