@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+### [1.0.4](https://github.com/axetrading/terraform-aws-cloudhealth/compare/v1.0.3...v1.0.4) (2024-04-12)
+
+
+### Bug Fixes
+
+* fixing policy names ([72a9cbd](https://github.com/axetrading/terraform-aws-cloudhealth/commit/72a9cbd6813e1f0c6ef5dc8ee70f746921d52dd8))
+
 ### [1.0.3](https://github.com/axetrading/terraform-aws-cloudhealth/compare/v1.0.2...v1.0.3) (2024-04-12)
 
 
