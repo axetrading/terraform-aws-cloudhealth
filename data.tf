@@ -23,8 +23,7 @@ data "aws_iam_policy_document" "cloudhealth_assume_role_policy" {
   }
 }
 
-data "aws_iam_policy_document" "combined_policy_doc" {
-  # Combining the statements from cloudhealth_read_only_policy_doc
+data "aws_iam_policy_document" "cloudhealth_read_only_policy" {
   statement {
     actions = [
       "appstream:Describe*",
@@ -125,7 +124,6 @@ data "aws_iam_policy_document" "combined_policy_doc" {
     resources = ["*"]
   }
 
-  # Combining the statements from cloudhealth_bucket_access
   statement {
     actions = [
       "s3:Get*",
